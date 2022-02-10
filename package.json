@@ -1,0 +1,25 @@
+{
+  "name": "tdk-cli",
+  "version": "1.0.1",
+  "description": "TDK Büyük Sözlük CLI uygulaması",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "chalk": "^5.0.0",
+    "node-fetch": "^3.2.0",
+    "nanospinner": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ."
+  },
+  "bin": "./index.js",
+  "keywords": [
+    "tdk",
+    "sözlük",
+    "cli"
+  ],
+  "author": "Şamil",
+  "license": "ISC"
+}
