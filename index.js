@@ -82,7 +82,16 @@ function renderResult(data) {
     for (const meaning of madde.meanings) {
       const replacedMeaning = meaning.meaning.replace(":", ".");
 
-      result += `${chalk.bold(meaning.id + ".")} ${chalk.yellowBright(meaning.typeOrSuffix)} ${replacedMeaning}\n`;
+      // id
+      result += `${chalk.bold(meaning.id + ".")} `;
+
+      // typeOrSuffix
+      if (meaning.typeOrSuffix) {
+        result += `${chalk.yellowBright(meaning.typeOrSuffix)} `;
+      }
+
+      // meaning
+      result += `${replacedMeaning}\n`;
 
       // Example text
 
