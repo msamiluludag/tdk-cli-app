@@ -14,12 +14,22 @@
   "scripts": {
     "start": "node ."
   },
-  "bin": "./index.js",
+  "bin": {
+    "tdk-cli": "index.js"
+  },
   "keywords": [
     "tdk",
     "sözlük",
     "cli"
   ],
   "author": "Şamil",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msamiluludag/tdk-cli-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/msamiluludag/tdk-cli-app/issues"
+  },
+  "homepage": "https://github.com/msamiluludag/tdk-cli-app#readme"
 }
