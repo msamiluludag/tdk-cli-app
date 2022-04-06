@@ -6,7 +6,7 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
 
-const API_URL = "https://glacial-reef-60079.herokuapp.com/tdk?word=";
+const API_URL = "https://tdk-db.herokuapp.com/tdk?word=";
 
 /**
  * Ask the user for a word to search for
