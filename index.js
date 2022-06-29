@@ -5,6 +5,9 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
 
+import yargs from "yargs";
+const y = yargs(process.argv.slice(2)).argv;
+
 const API_URL = "https://tdk-db.herokuapp.com/tdk?word=";
 
 /**
@@ -15,18 +18,20 @@ const API_URL = "https://tdk-db.herokuapp.com/tdk?word=";
 async function searchInTDK() {
   console.log(`\n${chalk.bgBlue(" 📖 TDK Sözlük ")}\n`);
 
-  const answers = await inquirer.prompt({
-    name: "word",
-    type: "input",
-    message: "Aramak istediğiniz kelimeyi giriniz.",
-    default() {
-      return "ör. kitap";
-    },
-  });
+  let input = y._[0];
 
-  let input = answers.word;
+  while (input === undefined || input.trim() === "") {
+    const answers = await inquirer.prompt([
+      {
+        type: "input",
+        name: "input",
+        message: "Lütfen bir kelime giriniz:",
+      },
+    ]);
+    input = answers.input;
+  }
 
-  const spinner = createSpinner("Aranıyor...").start();
+  const spinner = createSpinner(`"${input}" aranıyor...`).start();
 
   getWord(input).then((res) => {
     if (res.error) {
@@ -100,8 +105,6 @@ function renderResult(data) {
     console.log(result);
   }
 }
-
-// const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function main() {
   console.clear();
