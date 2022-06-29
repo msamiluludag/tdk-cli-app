@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// import node-fetch
 import fetch from "node-fetch";
 import chalk from "chalk";
 import inquirer from "inquirer";
@@ -9,13 +8,11 @@ import { createSpinner } from "nanospinner";
 const API_URL = "https://tdk-db.herokuapp.com/tdk?word=";
 
 /**
- * Ask the user for a word to search for
- * @returns The word that the user entered.
+ * It takes an input from the user, then it searches the input in the TDK dictionary and returns the
+ * result
+ * @returns The result of the getWord function.
  */
-
-let word;
-
-async function wordInput() {
+async function searchInTDK() {
   console.log(`\n${chalk.bgBlue(" 📖 TDK Sözlük ")}\n`);
 
   const answers = await inquirer.prompt({
@@ -27,17 +24,11 @@ async function wordInput() {
     },
   });
 
-  word = answers.word;
-}
+  let input = answers.word;
 
-/**
- * It searches the word in the dictionary and renders the result.
- */
-async function searchWord() {
   const spinner = createSpinner("Aranıyor...").start();
-  // await sleep(250);
 
-  getWord(word).then((res) => {
+  getWord(input).then((res) => {
     if (res.error) {
       spinner.error({ text: res.error });
       process.exit(1);
@@ -110,17 +101,11 @@ function renderResult(data) {
   }
 }
 
-/**
- * `sleep` is a function that takes a number of milliseconds as an argument and returns a promise that
- * resolves after that many milliseconds
- * @param ms - The number of milliseconds to wait.
- */
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function main() {
+function main() {
   console.clear();
-  await wordInput();
-  await searchWord();
+  searchInTDK();
 }
 
 main();

@@ -1,6 +1,6 @@
 {
   "name": "tdk-cli",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "TDK Büyük Sözlük CLI uygulaması",
   "type": "module",
   "main": "index.js",
