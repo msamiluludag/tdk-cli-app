@@ -9,13 +9,19 @@ TDK Büyük Sözlük'te arama yapmayı sağlayan bir CLI uygulamasıdır.
 Uygulamayı npm kullanarak yükleyin
 
 ```bash
-  npm i tdk-cli
+  npm i tdk-cli -g
 ```
 
 ## Kullanım
 
 ```bash
-  npx tdk-cli
+  tdk-cli
+```
+
+veya
+
+```bash
+  tdk-cli <kelime>
 ```
 
 ## Bilgisayarınızda Çalıştırın
